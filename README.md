@@ -11,9 +11,6 @@ A react component to show digital number
 
 ```js
 import DigitalNumber from 'react-digital-number'
-import moment from 'moment'
-
-const localizer = momentLocalizer(moment)
 
 const MyCalendar = props => (
   <div>
