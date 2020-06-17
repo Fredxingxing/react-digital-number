@@ -1,6 +1,6 @@
 {
   "name": "react-digital-number",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,12 @@
     "deploy": "gh-pages -d examples/dist",
     "publish-demo": "npm run build && npm run deploy"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "components",
+    "digital",
+    "number"
+  ],
   "author": "Fred",
   "license": "ISC",
   "peerDependencies": {
