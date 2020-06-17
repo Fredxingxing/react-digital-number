@@ -23,4 +23,17 @@ const Demo = props => (
   </div>
 )
 ```
+## Documentation
+
+| Name           | Description                                              | Type     | Default         |
+| :------------- | :------------------------------------------------------- | :------- | :-------------- |
+| nums           | show value                                               | String   | '123'           |              
+| color          | the active line color of number                          | String   | '#FF0000'       |
+| unActiveColor  | the unactive line color of number                        | String   | '#22221e'       |
+| backgroundColor| digital number container's background color              | String   | '#000'          |
+| width          | digital container's width                                | String   | '100%'          |
+| height         | digital container's height                               | String   | '100%'          |
+| transition     | digital container's transition                           | String   | 'none'          |
+
+
 ![Image text](https://raw.githubusercontent.com/Fredxingxing/react-digital-number/master/images/demo.png)
