@@ -1,7 +1,7 @@
 # react-digital-number
 A react component to show digital number
 
-### Demo: [codepen](https://codepen.io/fredxingxing/pen/wvMoaVa) | src example
+### Demo: [codepen](https://codepen.io/fredxingxing/pen/BajQLxx) | src example
 
 ## Use and Setup
 
