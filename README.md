@@ -12,7 +12,7 @@ A react component to show digital number
 ```js
 import DigitalNumber from 'react-digital-number'
 
-const MyCalendar = props => (
+const Demo = props => (
   <div>
      <DigitalNumber 
      nums={nums} 
