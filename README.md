@@ -7,7 +7,7 @@ A react component to show digital number
 
 `npm install --save react-digital-number`(todo)
 
-#### Moment.js
+#### Demo.js
 
 ```js
 import DigitalNumber from 'react-digital-number'
