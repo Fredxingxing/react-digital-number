@@ -5,7 +5,7 @@ A react component to show digital number
 
 ## Use and Setup
 
-`npm install --save react-digital-number`(todo)
+`npm install --save react-digital-number`
 
 #### Demo.js
 
