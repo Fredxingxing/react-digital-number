@@ -23,3 +23,4 @@ const Demo = props => (
   </div>
 )
 ```
+![Image text](https://raw.githubusercontent.com/Fredxingxing/react-digital-number/master/images/demo.png)
