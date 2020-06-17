@@ -15,10 +15,10 @@ import DigitalNumber from 'react-digital-number'
 const Demo = props => (
   <div>
      <DigitalNumber 
-     nums={nums} 
-     color:'#FF0000',
-     unActiveColor: '#22221e',
-     backgroundColor: '#000',
+     nums={nums}   // nums is the number your wanna show (defualt '123'
+     color:'#FF0000', // the active line color of number
+     unActiveColor: '#22221e', // the unactive line color of number
+     backgroundColor: '#000', // digital number container's background color
      />
   </div>
 )
