@@ -1,6 +1,6 @@
 {
   "name": "react-digital-number",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "repository": {
@@ -14,7 +14,8 @@
     "prepublishOnly": "npm run transpile",
     "build": "webpack --mode production",
     "deploy": "gh-pages -d examples/dist",
-    "publish-demo": "npm run build && npm run deploy"
+    "publish-demo": "npm run build && npm run deploy",
+    "publish-prod": "npm run transpile && npm publish"
   },
   "keywords": [
     "react",
