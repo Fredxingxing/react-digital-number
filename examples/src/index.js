@@ -68,7 +68,7 @@ const App = () => {
                     }
                 </div>
             </div>
-            <DigitalNumber nums={nums} {...theme[active]} transition="1s"/>
+            <DigitalNumber nums={nums} {...theme[active]} transition="1s" transform transformDuration={600}/>
         </div>
     )
 };

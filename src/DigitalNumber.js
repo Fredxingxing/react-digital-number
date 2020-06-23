@@ -1,4 +1,5 @@
 import React from 'react'
+import { Spring } from 'react-spring/renderprops'
 
 const number = [
     {
@@ -60,10 +61,13 @@ const DigitalNumber = ({
                            color = "#FF0000",
                            unActiveColor = "#22221e",
                            backgroundColor = "#000",
-                           transition = 'none'
+                           transition = 'none',
+                           transform = false,
+                           transformDuration=600,
                        }) => {
     let numsArray = nums ? nums.split('') : [1, 2, 3];
-    numsArray = numsArray.filter((item) => /[0-9]/g.test(item));
+    numsArray = numsArray.filter((item) => /[0-9]/g.test(item))
+    // const props = useSpring({ number: 1, from: { number: 0 } })
     return (
         <div
             style={{
@@ -75,27 +79,37 @@ const DigitalNumber = ({
             }}
         >
             {numsArray.map((item, index) => {
+                console.log(numsArray)
                 return (
-                    <svg
-                        key={`${item}-${index}`}
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 228 376"
-                        width="100%"
-                        height="100%"
-                        xmlnsXlink="http://www.w3.org/1999/xlink"
-                    >
-                        <g>
-                            {lineArray.map((line, lineIndex) => {
+                        <Spring
+                            key={`${item}-${index}`}
+                            from={{number: 0}}
+                            to={{number: parseInt(item,10)}}
+                            config={{duration:transformDuration}}
+                        >
+                            {props => {
                                 return (
-                                    <polygon
-                                        key={line}
-                                        points={line}
-                                        style={{fill: number[item].active.includes(lineIndex) ? color : unActiveColor}}
-                                    />
-                                );
-                            })}
-                        </g>
-                    </svg>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 228 376"
+                                        width="100%"
+                                        height="100%"
+                                        xmlnsXlink="http://www.w3.org/1999/xlink"
+                                    >
+                                        <g>
+                                            {lineArray.map((line, lineIndex) => {
+                                                return (
+                                                    <polygon
+                                                        key={line}
+                                                        points={line}
+                                                        style={{fill: number[transform?Math.ceil(props.number):item].active.includes(lineIndex) ? color : unActiveColor}}
+                                                    />
+                                                );
+                                            })}
+                                        </g>
+                                    </svg>)
+                            }}
+                        </Spring>
                 );
             })}
         </div>
