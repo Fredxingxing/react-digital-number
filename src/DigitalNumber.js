@@ -1,5 +1,5 @@
 import React from 'react'
-import { Spring } from 'react-spring/renderprops'
+import {Spring} from 'react-spring/renderprops'
 
 const number = [
     {
@@ -42,6 +42,10 @@ const number = [
         value: 9,
         active: [0, 1, 2, 3, 5, 6],
     },
+    {
+        value: "-",
+        active: [3]
+    }
 ];
 
 const lineArray = [
@@ -63,11 +67,31 @@ const DigitalNumber = ({
                            backgroundColor = "#000",
                            transition = 'none',
                            transform = false,
-                           transformDuration=600,
+                           transformDuration = 600,
                        }) => {
     let numsArray = nums ? nums.split('') : [1, 2, 3];
-    numsArray = numsArray.filter((item) => /[0-9]/g.test(item))
+    numsArray = numsArray.filter((item) => /[0-9.-]/g.test(item));
     // const props = useSpring({ number: 1, from: { number: 0 } })
+    const renderPoint = () => {
+        return (
+            <svg
+                /* eslint-disable-next-line react/no-array-index-key */
+                key='point'
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 228 376"
+                width="40%"
+                height="100%"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+            >
+                <g>
+                    <polygon
+                        points="80,500 80,420 160,420 160,500"
+                        style={{fill: color}}
+                    />
+                </g>
+            </svg>
+        );
+    }
     return (
         <div
             style={{
@@ -79,37 +103,39 @@ const DigitalNumber = ({
             }}
         >
             {numsArray.map((item, index) => {
-                console.log(numsArray)
+                if (item === ".") {
+                    return renderPoint()
+                }
                 return (
-                        <Spring
-                            key={`${item}-${index}`}
-                            from={{number: 0}}
-                            to={{number: parseInt(item,10)}}
-                            config={{duration:transformDuration}}
-                        >
-                            {props => {
-                                return (
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 228 376"
-                                        width="100%"
-                                        height="100%"
-                                        xmlnsXlink="http://www.w3.org/1999/xlink"
-                                    >
-                                        <g>
-                                            {lineArray.map((line, lineIndex) => {
-                                                return (
-                                                    <polygon
-                                                        key={line}
-                                                        points={line}
-                                                        style={{fill: number[transform?Math.ceil(props.number):item].active.includes(lineIndex) ? color : unActiveColor}}
-                                                    />
-                                                );
-                                            })}
-                                        </g>
-                                    </svg>)
-                            }}
-                        </Spring>
+                    <Spring
+                        key={`${item}-${index}`}
+                        from={{number: 0}}
+                        to={{number: parseInt(item, 10)}}
+                        config={{duration: transformDuration}}
+                    >
+                        {props => {
+                            return (
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 228 376"
+                                    width="100%"
+                                    height="100%"
+                                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                                >
+                                    <g>
+                                        {lineArray.map((line, lineIndex) => {
+                                            return (
+                                                <polygon
+                                                    key={line}
+                                                    points={line}
+                                                    style={{fill: number[transform ? Math.ceil(props.number) : item].active.includes(lineIndex) ? color : unActiveColor}}
+                                                />
+                                            );
+                                        })}
+                                    </g>
+                                </svg>)
+                        }}
+                    </Spring>
                 );
             })}
         </div>
