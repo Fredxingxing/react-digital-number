@@ -57,7 +57,13 @@ const lineArray = [
     '63,310 83,290 147,290 167,310 147,330 83,330',
     '150,206 169,187 190,207 190,287  170,307 150,287',
 ];
-
+const svgDefaultProps = {
+    xmlns:"http://www.w3.org/2000/svg",
+    viewBox:"0 0 228 376",
+    width:"100%",
+    height:"100%",
+    xmlnsXlink:"http://www.w3.org/1999/xlink"
+}
 const DigitalNumber = ({
                            nums,
                            width = "100%",
@@ -76,12 +82,9 @@ const DigitalNumber = ({
         return (
             <svg
                 /* eslint-disable-next-line react/no-array-index-key */
+                {...svgDefaultProps}
                 key='point'
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 228 376"
                 width="40%"
-                height="100%"
-                xmlnsXlink="http://www.w3.org/1999/xlink"
             >
                 <g>
                     <polygon
@@ -91,6 +94,27 @@ const DigitalNumber = ({
                 </g>
             </svg>
         );
+    }
+    // render -
+    const renderSymbol = () => {
+        const minusSymbolNumber = number.find((item)=>item.value === '-')
+        return (<svg
+            {...svgDefaultProps}
+            key="minus"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
+            <g>
+                {lineArray.map((line, lineIndex) => {
+                    return (
+                        <polygon
+                            key={line}
+                            points={line}
+                            style={{fill: minusSymbolNumber.active.includes(lineIndex) ? color : unActiveColor}}
+                        />
+                    );
+                })}
+            </g>
+        </svg>)
     }
     return (
         <div
@@ -103,8 +127,11 @@ const DigitalNumber = ({
             }}
         >
             {numsArray.map((item, index) => {
-                if (item === ".") {
+                if (item === '.') {
                     return renderPoint()
+                }
+                if(item === '-'){
+                    return renderSymbol()
                 }
                 return (
                     <Spring
@@ -116,11 +143,7 @@ const DigitalNumber = ({
                         {props => {
                             return (
                                 <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 228 376"
-                                    width="100%"
-                                    height="100%"
-                                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                                    {...svgDefaultProps}
                                 >
                                     <g>
                                         {lineArray.map((line, lineIndex) => {

@@ -26,7 +26,7 @@ const theme = [
 ];
 
 const App = () => {
-    const [nums, setNums] = useState("123");
+    const [nums, setNums] = useState("-123.456");
     const [active, setActive] = useState(0);
     const handleInput = (e) => {
         setNums(e.target.value)
@@ -46,7 +46,7 @@ const App = () => {
             <h1>Digital Number Demo</h1>
             <div style={{marginBottom: 24}}>
                 <span>Enter number to transfer:  </span>
-                <input onChange={(e) => handleInput(e)}/>
+                <input value={nums} onChange={(e) => handleInput(e)}/>
             </div>
             <div style={{display: 'flex', marginBottom: 36}}>
                 <span>choose theme:  </span>
